@@ -1,0 +1,21 @@
+dubbo:
+  application:
+    name: application-provider
+  protocol:
+    id: dubbo
+    port: 20880
+  registry:
+    id: application-provider
+    address: zookeeper://127.0.0.1:2181
+
+
+elastic:
+  job:
+    zk:
+      serverList: 127.0.0.1:2181
+      namespace: example-elastic-job-test
+    myjob:
+      cron: 0 0/1 *  * * ?
+      shardingTotalCount: 3
+      shardingItemParameters: 0=a,1=b,2=c
+      jobParameters: helloWorld
