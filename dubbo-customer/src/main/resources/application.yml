@@ -12,3 +12,18 @@ dubbo:
     address: zookeeper://127.0.0.1:2181
   consumer:
     check: false
+
+elasticjob:
+  regCenter:
+    serverLists: 127.0.0.1:2181
+    namespace: elasticjob-lite-springboot
+  jobs:
+    MyDataJob:
+      elasticJobClass: org.apache.shardingsphere.elasticjob.dataflow.job.DataflowJob
+      cron: 0 0/1 * * * ?
+      shardingTotalCount: 3
+      shardingItemParameters: 0=Beijing,1=Shanghai,2=Guangzhou
+      overwrite: true
+      failover: false
+      props:
+        streaming.process: true
